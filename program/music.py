@@ -250,18 +250,18 @@ async def play(c: Client, m: Message):
                 format = "bestaudio[ext=m4a]"
                 
                 loop = asyncio.get_event_loop
-                    
-                    try:
-                        veez, ytlink = await asyncio.wait_for(
-                            user.loop.run_in_executor(
-                                None,
-                                lambda : ytdl(format, url)
-                            ),
-                            timeout=None
-                        )
-                    except asyncio.TimeoutError:
-                        await suhu.edit("TimeoutError: process is taking unexpected time")
-                        return
+                
+                try:
+                    veez, ytlink = await asyncio.wait_for(
+                        user.loop.run_in_executor(
+                            None,
+                            lambda : ytdl(format, url)
+                        ),
+                        timeout=None
+                    )
+                except asyncio.TimeoutError:
+                    await suhu.edit("TimeoutError: process is taking unexpected time")
+                    return
                 
                 if veez == 0:
                     await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
