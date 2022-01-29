@@ -180,7 +180,7 @@ async def play(c: Client, m: Message):
                         veez, ytlink = await asyncio.wait_for(
                             user.loop.run_in_executor(
                                 None,
-                                lambda : ytdl(format, url)
+                                lambda : await ytdl(format, url)
                             ),
                             timeout=None
                         )
@@ -255,7 +255,7 @@ async def play(c: Client, m: Message):
                     veez, ytlink = await asyncio.wait_for(
                         user.loop.run_in_executor(
                             None,
-                            lambda : ytdl(format, url)
+                            lambda : await ytdl(format, url)
                         ),
                         timeout=None
                     )
